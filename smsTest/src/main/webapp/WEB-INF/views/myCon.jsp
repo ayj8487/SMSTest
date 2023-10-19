@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	ㄴㄴ
 	<h1>사용자 정보</h1>
 	<p>이름 : ${username}</p>
 	<p>이메일 : ${email}</p>

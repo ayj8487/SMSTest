@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-		<a href="/valiForm">아이디 찾기</a>
+		
+		<a href="/valiForm">내명의 휴대폰으로 인증하여  찾기</a>
 	
 </body>
 </html>

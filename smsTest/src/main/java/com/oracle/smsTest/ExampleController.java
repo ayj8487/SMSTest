@@ -184,27 +184,27 @@ public class ExampleController {
 	        
 	        model.addAttribute("ranCode",ranCode);
 
-	        if(inputCode.equals(ranCode)) {
+	        model.addAttribute("username", "안영준");
+	        model.addAttribute("email","ayj8487@naver.com");
+	        
+	        String phone = response.component3();
+	       // if(inputCode.equals(ranCode)) {
 	    		
 	    		
-	    		model.addAttribute("username", "안영준");
-	    		model.addAttribute("email","ayj8487@naver.com");
 	    		
-	    		String phone = "010-1234-5512"; // 중간번호 가리기 테스트
 	    		String maskPhon = maskPhon(phone);
+	    		System.out.println(maskPhon);
 	    		model.addAttribute("phone", maskPhon);
 	    		
-	    		return "myCon"; // 사용자 정보 조회 페이지
+	    		return "/myCon"; // 사용자 정보 조회 페이지
 	    	
-	    	} else {
-	    		model.addAttribute("error", "인증번호가 일지하지 않습니다.") ;
-	    		return "valiForm";
-	    	}
+//	    	} else {
+//	    		model.addAttribute("error", "인증번호가 일지하지 않습니다.") ;
+//	    		return "redirect:valiForm";
+//	    	}
+	
 	    }
 
-	    
-	    
-	    
 
 	    /**
 	     * MMS 발송 예제
