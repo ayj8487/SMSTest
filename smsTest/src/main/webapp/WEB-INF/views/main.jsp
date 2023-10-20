@@ -8,7 +8,8 @@
 </head>
 <body>
 		
-		<a href="/valiForm">내명의 휴대폰으로 인증하여  찾기</a>
-	
+		<a href="/valiForm">내명의 휴대폰으로 인증하여  찾기</a> <p>
+		
+		<a href="/memberList">회원조회</a>
 </body>
 </html>
