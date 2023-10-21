@@ -9,5 +9,13 @@
 		select * from member
 
     </select>
+	
+	<select id="idCon" resultType="int" parameterType="String">
+		
+		select count(*) from member where m_id = #{m_id}
+	
+	</select>
+	
+
 
 </mapper>

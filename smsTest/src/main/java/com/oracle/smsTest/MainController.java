@@ -26,4 +26,11 @@ public class MainController {
     	
     	return "myCon";
     }
+    // 회원가입 
+    @RequestMapping("/joinForm")
+    public String memberjoin() {
+    	
+    	return "member/joinForm";
+    }
+    
 }

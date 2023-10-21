@@ -23,5 +23,12 @@ public class MemberDaoImpl implements MemberDao{
 		return memberList;
 	}
 
+	@Override
+	public boolean idCon(String m_id) {
+		Integer idCon = session.selectOne("idCon",m_id);
+		
+		return idCon != null && idCon > 0;
+	}
+
 	
 }
