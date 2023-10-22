@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 public class MemberDaoImpl implements MemberDao{
 	
 	private final SqlSession session;
-	
+	// 회원 전체 조회
 	@Override
 	public List<Member> memberList() {
 
@@ -22,12 +22,19 @@ public class MemberDaoImpl implements MemberDao{
 		
 		return memberList;
 	}
-
+	// ID 중복 검사
 	@Override
 	public int idCon(String m_id) {
 		Integer idCon = session.selectOne("idCon",m_id);
 		
 		return idCon;
+	}
+	// 회원 가입
+	@Override
+	public int joinResult(Member member) {
+		int joinResult = session.insert("joinResult",member);
+	
+		return joinResult;
 	}
 
 	

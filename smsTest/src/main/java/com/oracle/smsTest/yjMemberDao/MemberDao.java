@@ -10,4 +10,6 @@ public interface MemberDao {
 
 	int idCon(String m_id);
 
+	int joinResult(Member member);
+
 }

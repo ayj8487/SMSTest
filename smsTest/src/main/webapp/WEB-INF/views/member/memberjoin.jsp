@@ -59,23 +59,31 @@
     }
 </script>
 
+
 <script type="text/javascript">
+// 아이디 중복검사
 	function chkId(){
 		var m_id = document.getElementById("m_id").value;
+		
+		// 정규식 4~12자 + @, #, $ 제외 
+		var regex = /^[a-zA-Z0-9]{4,12}$/;
+		
+		 // 정규표현식을 통한 유효성 검사
+        if (!regex.test(m_id)) {
+            alert("아이디는 4자에서 12자 사이의 영문자와 숫자로만 작성해주세요.");
+        }
 		location.href="idConfirm?m_id="+m_id;
 	};
 
 </script>
 
-
 </head>
 <body>
 	
 	<h1>회원가입</h1>
-	<form action="" method="post" id="frm" >
-		이름 <input type="text" id="m_name" name="m_name" placeholder="이름을 입력해주세요." required="required" > <p>	
-		아이디 <input type="text" id="m_id" name="m_id" placeholder="아이디를 입력해주세요" required="required" value="${m_id }"> <button onclick="chkId()">중복확인</button>
-		
+	<form action="memberJoinAction" method="post" id="frm" >
+		아이디 <input type="text" id="m_id" name="m_id" placeholder="아이디를 입력해주세요" required="required" value="${m_id }"> <button onclick="chkId()" >중복확인</button> 
+
 		<c:if test="${not empty no}">
 		    <small style="color:red;">${no}</small>
 		</c:if>
@@ -84,28 +92,30 @@
 		    <small style="color:red;">${ok}</small>
 		</c:if>
 		<p>
-		
 		<small>(4자 ~ 12자라의 영문자, 숫자 / @,#,$ 등 특수문자는 제외)</small> <p>
+
+		이름 <input type="text" id="m_name" name="m_name" placeholder="이름을 입력해주세요." required="required" > <p>	
+
 		이메일 
-		<input type="text"  id="m_email1" name="m_email" size="8" required="required">
+		<input type="text"  id="m_email1" name="m_email1" size="8" required="required">
 		 @ 
 		 <input type="text" id="m_email2" name="m_email2" required="required"> 
-		 <select>
-		 	<option>naver.com</option>
-		 	<option>gmail.com</option>
-		 	<option>daum.com</option>
-		 	<option>hanmail.com</option>
-		 	<option>nate.com</option>
-		 	<option>yahoo.com</option>
+		 <select name="m_email">
+		 	<option value="naver.com">naver.com</option>
+		 	<option value="gmail.com">gmail.com</option>
+		 	<option value="daum.com">daum.com</option>
+		 	<option value="hanmail.com">hanmail.com</option>
+		 	<option value="nate.com">nate.com</option>
+		 	<option value="yahoo.com">yahoo.com</option>
 		 	<option selected="selected">직접 입력</option>
 		 </select><p>
 		
 		비밀번호 <input type="password" id="m_pw" name="m_pw" placeholder="비밀번호를 입력해주세요" required="required"> <p>
 			<small>영문,숫자,특수문자 조합하여 8자~20자리</small> <p>
-		비밀번호 재입력 <input type="password" id="pw_ck" required="required">	<p>
+		비밀번호 재입력 <input type="password" id="pw_ck" placeholder="비밀번호를  다시 입력해 주세요" required="required">	<p>
 		
 		휴대전화 
-			<input type="text" size="4" id="m_ph1" name="m_ph1" required="required"> 
+			<input type="text" size="3" id="m_ph1" name="m_ph1" required="required"> 
 			-
 			<input type="text" size="4" id="m_ph2" name="m_ph2" required="required"> 
 			-
@@ -115,11 +125,11 @@
 			<small>생년월일 8 자리를 입력하세요</small> <p>
 		
 		주소 
-			<input type="text" id="sample6_postcode" placeholder="주소검색 버튼을 이용해주세요" size="25">
-			<input type="button" onclick="sample6_execDaumPostcode()" value="주소 검색"><br>
-			<input type="text" id="sample6_address" placeholder="주소" size="40" required="required"><br>
-			<input type="text" id="sample6_extraAddress" placeholder="참고항목" size="40"><p>
-	상세주소입력 <input type="text" id="sample6_detailAddress" placeholder="상세주소를 입력해주세요" size="25" required="required"> <p>
+			<input type="text"     name = "m_addr1" 	 id="sample6_postcode" placeholder="주소검색 버튼을 이용해주세요" size="25">
+			<input type="button"  onclick="sample6_execDaumPostcode()" value="주소 검색"><br>
+			<input type="text"     name = "m_addr2"		id="sample6_address" placeholder="주소" size="40" required="required"><br>
+			<input type="text"    	id="sample6_extraAddress" placeholder="참고항목" size="40"><p>
+     상세주소입력 <input type="text"    name="m_addr"  id="sample6_detailAddress" placeholder="상세주소를 입력해주세요" size="25" required="required"> <p>
 		
 		추천인 <input type="text" id="m_reid" name="m_reid" placeholder="추천인 아이디를 입력해주세요 : 선택 " size="35"><p>	
 					
@@ -129,6 +139,22 @@
 	
 	
 </body>
+
+<script type="text/javascript">
+	// 비밀번호 재확인 
+	var m_pw = document.getElementById("m_pw");
+    var pw_ck = document.getElementById("pw_ck");
+
+    function valiPw() {
+        if (m_pw.value !== pw_ck.value) { 
+            alert("비밀번호가 일치하지 않습니다.");
+            pw_ck.value = ""; 
+            pw_ck.focus(); 
+            return false;
+        }
+        return true;
+    }
+</script>
 
 
 <script type="text/javascript">

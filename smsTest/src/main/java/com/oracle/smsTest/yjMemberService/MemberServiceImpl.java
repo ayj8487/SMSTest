@@ -29,5 +29,11 @@ public class MemberServiceImpl implements MemberService{
 		return idConOk;
 	}
 
+	@Override
+	public int joinResult(Member member) {
+		int joinResult = md.joinResult(member);
+		return joinResult;
+	}
+
 	
 }

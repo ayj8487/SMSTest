@@ -10,5 +10,7 @@ public interface MemberService {
 	List<Member> memberList();
 	// 아이디 중복검사 
 	int idCon(String m_id);
+	// 회원가입
+	int joinResult(Member member);
 
 }

@@ -16,6 +16,15 @@
 	
 	</select>
 	
-
+	<insert id="joinResult" parameterType="Member">
+		
+	insert into member    
+		values
+	( MEMBER_M_NUM_SEQ.nextval ,   #{m_name},  #{m_id},
+	  #{m_pw},    #{m_ph},    #{m_addr}, 
+	  #{m_email}, #{m_birth}, sysdate, 0, 0, 0)
+	
+	</insert>
+	
 
 </mapper>
