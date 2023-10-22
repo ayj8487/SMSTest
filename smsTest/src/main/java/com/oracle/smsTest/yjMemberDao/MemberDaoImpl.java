@@ -24,10 +24,10 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
-	public boolean idCon(String m_id) {
+	public int idCon(String m_id) {
 		Integer idCon = session.selectOne("idCon",m_id);
 		
-		return idCon != null && idCon > 0;
+		return idCon;
 	}
 
 	

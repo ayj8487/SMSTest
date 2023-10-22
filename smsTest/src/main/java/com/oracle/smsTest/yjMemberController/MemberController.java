@@ -43,17 +43,18 @@ public class MemberController {
 	public String idConfirm(@RequestParam String m_id, Model model) {
 
 		System.out.println("m_id ->" + m_id);
-
-		boolean idConOk = ms.idCon(m_id);
-
-		if (idConOk) {
-			// 아이디가 이미 존재하는 경우
-			model.addAttribute("idConOk", "exist");
-		} else {
-			// 아이디가 존재하지 않는 경우
-			model.addAttribute("idConOk", "available");
+		
+		int idResult = ms.idCon(m_id);
+		
+		System.out.println(idResult);
+		
+		if(idResult > 0) {
+			model.addAttribute("no", "중복된 ID 입니다. 다시 입력해 주세요.");
+		}else {
+			model.addAttribute("m_id",m_id);
+			model.addAttribute("ok", m_id + " 는 사용 할 수 있는 ID 입니다.");
 		}
 
-		return "member/idConfirm";
+		return "member/memberjoin";
 	}
 }

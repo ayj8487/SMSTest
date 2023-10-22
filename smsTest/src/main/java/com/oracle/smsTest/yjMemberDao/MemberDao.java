@@ -8,6 +8,6 @@ public interface MemberDao {
 
 	List<Member> memberList();
 
-	boolean idCon(String m_id);
+	int idCon(String m_id);
 
 }

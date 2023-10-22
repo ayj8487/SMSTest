@@ -9,6 +9,6 @@ public interface MemberService {
 	// 회원 전체 조회 
 	List<Member> memberList();
 	// 아이디 중복검사 
-	boolean idCon(String m_id);
+	int idCon(String m_id);
 
 }

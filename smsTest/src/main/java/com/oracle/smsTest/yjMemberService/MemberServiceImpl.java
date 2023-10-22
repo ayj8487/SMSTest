@@ -23,9 +23,9 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public boolean idCon(String m_id) {
-		boolean idConOk = md.idCon(m_id);
-		
+	public int idCon(String m_id) {
+		int idConOk = md.idCon(m_id);
+		System.out.println("MemberServiceImpl m_id ->" + m_id);
 		return idConOk;
 	}
 

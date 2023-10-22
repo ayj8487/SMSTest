@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,32 +60,31 @@
 </script>
 
 <script type="text/javascript">
-    function idcon() {
-        var m_id = document.getElementById("m_id").value;
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/member/idConfirm?m_id=" + m_id, true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var result = xhr.responseText;
-                var idConResult = document.getElementById("idConResult");
-                if (result === "exist") {
-                    idConResult.innerHTML = "이미 존재하는 아이디입니다.";
-                } else if (result === "available") {
-                    idConResult.innerHTML = "사용 가능한 아이디입니다.";
-                }
-            }
-        };
-        xhr.send();
-    }
+	function chkId(){
+		var m_id = document.getElementById("m_id").value;
+		location.href="idConfirm?m_id="+m_id;
+	};
+
 </script>
+
 
 </head>
 <body>
 	
 	<h1>회원가입</h1>
-	<form action="" method="post" id="frm">
-		이름 <input type="text" id="m_name" name="m_name" placeholder="이름을 입력해주세요." required="required"> <p>	
-		아이디 <input type="text" id="m_id" name="m_id" placeholder="아이디를 입력해주세요" required="required"> <button onclick="idcon()">중복확인</button> <div id="idConResult"></div><p>
+	<form action="" method="post" id="frm" >
+		이름 <input type="text" id="m_name" name="m_name" placeholder="이름을 입력해주세요." required="required" > <p>	
+		아이디 <input type="text" id="m_id" name="m_id" placeholder="아이디를 입력해주세요" required="required" value="${m_id }"> <button onclick="chkId()">중복확인</button>
+		
+		<c:if test="${not empty no}">
+		    <small style="color:red;">${no}</small>
+		</c:if>
+		
+		<c:if test="${not empty ok}">
+		    <small style="color:red;">${ok}</small>
+		</c:if>
+		<p>
+		
 		<small>(4자 ~ 12자라의 영문자, 숫자 / @,#,$ 등 특수문자는 제외)</small> <p>
 		이메일 
 		<input type="text"  id="m_email1" name="m_email" size="8" required="required">
@@ -145,7 +145,7 @@
   		 var selectedOption = emailSelect.options[emailSelect.selectedIndex].value;
 
         // "직접입력" 옵션을 선택한 경우
-        if (selectedOption === "직접입력") {
+        if (selectedOption === "직접 입력") {
             // m_email2 입력 필드를 활성화하고 포커스를 설정,  disabled : 비활성화
             mEmail2.removeAttribute("disabled");
             mEmail2.value = ""; // 입력 필드 초기화
@@ -156,7 +156,9 @@
             mEmail2.value = selectedOption;
         }
     });
-	
+</script>
+
+<script type="text/javascript">
  // ********* 전화번호 처리 *********
     // 각 입력 필드의 최대 길이 지정
     var maxLength = 4;
