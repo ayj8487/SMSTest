@@ -73,6 +73,9 @@ public class MemberController {
 									@RequestParam("m_ph2") String m_ph2,
 									@RequestParam("m_ph3") String m_ph3,
 									
+									@RequestParam("m_birth") String m_birth,
+									@RequestParam("m_birth1") String m_birth1,
+									
 									@RequestParam("m_addr1") String m_addr1,
 									@RequestParam("m_addr2") String m_addr2,
 									@RequestParam("m_addr") String m_addr,
@@ -85,15 +88,18 @@ public class MemberController {
 		
 		member.setM_email(m_email1+"@"+m_email);
 		member.setM_ph(m_ph1+"-"+m_ph2+"-"+m_ph3);
+		member.setM_birth(m_birth+m_birth1);
 		member.setM_addr("("+m_addr1+") " + m_addr2 + " " + m_addr );
 		
 		
 		String m_emailAll = member.getM_email();
 		String m_phAll = member.getM_ph();
+		String m_birthAll = member.getM_birth();
 		String m_addrAll = member.getM_addr();
 		
 		System.out.println("m_emailAll ->"+ m_emailAll);
 		System.out.println("m_phAll ->"+ m_phAll);
+		System.out.println("m_birthAll ->" + m_birthAll);
 		System.out.println("m_addrAll ->" + m_addrAll);
 		
 		int joinResult = ms.joinResult(member);
