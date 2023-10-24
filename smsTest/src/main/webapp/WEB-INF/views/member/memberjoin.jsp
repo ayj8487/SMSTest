@@ -250,7 +250,7 @@ function valiForm() {
 			<option value="hanmail.com">hanmail.com</option>
 			<option value="nate.com">nate.com</option>
 			<option value="yahoo.com">yahoo.com</option>
-			<option selected="selected" >직접 입력</option>
+			<option value="" selected="selected" >직접 입력</option>
 		</select><p>
 
 		비밀번호 <input type="password" id="m_pw" name="m_pw" placeholder="비밀번호를 입력해주세요" size="25" required="required"><p>
@@ -300,7 +300,7 @@ function valiForm() {
 		var selectedOption = emailSelect.options[emailSelect.selectedIndex].value;
 
 		// "직접 입력" 옵션을 선택한 경우
-		if (selectedOption === "직접 입력") {
+		if (selectedOption === "custom") {
 			// m_email2 입력 필드를 활성화하고 포커스를 설정,  disabled : 비활성화
 			mEmail2.removeAttribute("disabled");
 			mEmail2.value = ""; // 입력 필드 초기화
