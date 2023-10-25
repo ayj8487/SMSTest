@@ -298,9 +298,10 @@ function valiForm() {
 	emailSelect.addEventListener("change",function() {
 		// 선택된 select 요소의 옵션에서 value 속성 값을 selectedOption 변수에 할당
 		var selectedOption = emailSelect.options[emailSelect.selectedIndex].value;
-
+		var email2Val = "";
+		
 		// "직접 입력" 옵션을 선택한 경우
-		if (selectedOption === "custom") {
+		if (selectedOption === "") {
 			// m_email2 입력 필드를 활성화하고 포커스를 설정,  disabled : 비활성화
 			mEmail2.removeAttribute("disabled");
 			mEmail2.value = ""; // 입력 필드 초기화
