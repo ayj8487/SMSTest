@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %> 
+<%@ include file="side.jsp" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+
+				
 	<h3>아이디 찾기</h3>
 	
 	<form action="/send-one" method="post">
@@ -15,6 +19,9 @@
 		<button id="sendCodeBtn">인증번호 전송</button><p>
 		<input type="submit" value="확인">
 	</form>
+
+				
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>
